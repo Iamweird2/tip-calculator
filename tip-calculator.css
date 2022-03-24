@@ -1,0 +1,240 @@
+:root{
+    --color1: hsl(183, 100%, 15%);
+    --color2: hsl(186, 14%, 43%);
+    --color3: hsl(184, 14%, 56%);
+    --color4: hsl(185, 41%, 84%);
+    --color5: hsl(189, 41%, 97%);
+    --color6: hsl(0, 0%, 100%);
+}
+
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body{
+    font-family: "space mono";
+    font-size: 15px;
+    color: black;
+    background-color: var(--color3);
+    width: 100%;
+    padding-top: 20px;
+}
+.bg-image{
+    width: 40%;
+    margin: 0px auto 100px;
+    text-align: center;
+}
+.card{
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--color6);
+    padding: 20px;
+}
+.bill h2,
+.select-tip h2,
+.no-of-people h2{
+    color: var(--color2);
+    font-size: 13px;
+}
+.bill input,
+.no-of-people input{
+    width: 100%;
+    background-color: var(--color5);
+    text-align: right;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+#custom-tip{
+    width: 45%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.bill .img,
+.no-of-people .img{
+    width: 20px;
+    height: auto;
+    position: relative;
+    top: -18px;
+    transform: translate(10px, -50%);
+}
+.select-tip{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.bill input:hover,
+.no-of-people input:hover{
+    border: 1px solid var(--color2);
+}
+.select-tip h2{
+    margin-bottom: 15px;
+    flex-basis: 100%;
+}
+.select-tip-button{
+    text-align: center;
+    flex-basis: 45%;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: var(--color1);
+    color: var(--color5);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.select-tip-button:last-child{
+    background-color: var(--color5);
+    color: var(--color2);
+    cursor: pointer;
+}
+.select-tip-button:last-child:focus{
+    text-align: right;  
+    background-color: var(--color5);
+
+}
+.select-tip-button:nth-child(4){        
+    background-color: hsl(172, 67%, 45%);
+    color: var(--color1);
+}
+.select-tip-button:hover{
+    background-color: var(--color4);
+    color: var(--color1);
+}
+.output{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 20px 5%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: var(--color1);
+    color: var(--color4);
+}
+.output h2{
+    color: var(--color5);
+}
+.output p{
+    color: hsl(172, 67%, 45%);
+}
+
+.output-1,
+.output-2{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.output .reset-button{
+    flex-basis: 90%;
+    text-align: center;
+    padding: 10px;
+    background-color: hsl(172, 67%, 45%);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.attribution { 
+    font-size: 11px; text-align: center; 
+}
+.attribution a {
+     color: hsl(228, 45%, 44%);
+}
+.no-of-people h2{
+    display: inline;
+}
+.no-of-people{
+    position: relative;
+}
+.error-message{
+    display: none;
+}
+.error-message-active{
+    display: block;
+    position: absolute;
+    display: inline;
+    text-align: right;
+    color: red;
+}
+#people-active{
+    border: 1px solid red;
+}
+@media (min-width: 1000px) {
+    .body{
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color4);
+        padding-top: 0px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .card{
+        width: 60%;
+        padding: 30px;
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 5%;
+    }
+    .bill-select-bill-no-of-people{
+        flex-basis: 47.5%;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+    .select-tip-button{
+        text-align: center;
+        max-width: 30%;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: var(--color1);
+        color: var(--color4);
+        margin-bottom: 15px;
+        flex-shrink: 0;
+    }
+ #custom-tip{
+        width: 30%;
+        height: 36px;
+        padding: 10px;
+        outline: 0;
+        border-radius: 5px;
+        background-color: var(--color4);
+    }
+     #custom-tip:target{
+        border: 2px solid var(--color3);
+    }
+    .output{
+        padding-top: 50px;
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: column nowrap;
+        margin: 0;
+    }
+    .output .reset-button{
+        flex-basis: 0;
+    }
+    div > h2{
+        font-size: 13px;
+    }
+    div > p{
+        font-size: 13px;
+    }
+    .cost{
+    font-size: 20px;
+    font-weight: 700
+    }
+    .result-font{
+    font-size: 10px;
+    }
+}
