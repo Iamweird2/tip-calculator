@@ -15,7 +15,7 @@
 }
 .body{
     font-family: "space mono";
-    font-size: 15px;
+    font-size: 1em;
     color: black;
     background-color: var(--color3);
     width: 100%;
@@ -33,14 +33,14 @@
     background-color: var(--color6);
     padding: 20px;
 }
-.bill h2,
-.select-tip h2,
-.no-of-people h2{
+.bill-head,
+.select-tip-head,
+.no-of-people-head{
     color: var(--color2);
-    font-size: 13px;
+    font-size: 1em;
 }
-.bill input,
-.no-of-people input{
+.bills,
+.people{
     width: 100%;
     background-color: var(--color5);
     text-align: right;
@@ -48,10 +48,12 @@
     margin-top: 10px;
     border-radius: 5px;
     position: relative;
+    font-size: 1.867em;
 }
-#custom-tip{
+.custom-tip{
     width: 45%;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -74,11 +76,31 @@ input[type=number] {
     justify-content: space-between;
     width: 100%;
 }
-.bill input:hover,
-.no-of-people input:hover{
-    border: 1px solid var(--color2);
+.custom-tip{
+    margin-bottom: 15px;
+    text-align: right;
+    font-size: 1.867em;
+    background-color: var(--color5);
+    color: var(--color1);
+    cursor: pointer;
+    font-family: "space mono";
 }
-.select-tip h2{
+.custom-tip:hover{
+    background-color: var(--color4);
+    border-radius: 8px;
+}
+.bills:focus,
+.people:focus,
+.custom-tip:focus{
+    outline: none;
+}
+.bills:hover,
+.people:hover,
+.custom-tip:hover{
+    border: 2px solid hsl(172, 67%, 45%);
+}
+
+.select-tip-head{
     margin-bottom: 15px;
     flex-basis: 100%;
 }
@@ -86,30 +108,24 @@ input[type=number] {
     text-align: center;
     flex-basis: 45%;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px 20px;
     background-color: var(--color1);
     color: var(--color5);
     margin-bottom: 15px;
-    font-weight: 700;
+    font-size: 1.867em;
+    font-family: "space mono";
 }
-.select-tip-button:last-child{
-    background-color: var(--color5);
-    color: var(--color2);
-    cursor: pointer;
+.select-tip-button:hover{
+    background-color: #9fe7df;
+    color: black;
 }
 .select-tip-button:last-child:focus{
     text-align: right;  
     background-color: var(--color5);
 
 }
-.select-tip-button:nth-child(4){        
-    background-color: hsl(172, 67%, 45%);
-    color: var(--color1);
-}
-.select-tip-button:hover{
-    background-color: var(--color4);
-    color: var(--color1);
-}
+
+
 .output{
     margin-top: 20px;
     margin-bottom: 30px;
@@ -120,6 +136,7 @@ input[type=number] {
     flex-flow: column nowrap;
     background-color: var(--color1);
     color: var(--color4);
+    font-size: 0.8em;
 }
 .output h2{
     color: var(--color5);
@@ -143,12 +160,14 @@ input[type=number] {
     border-radius: 5px;
     cursor: pointer;
 }
-
+.cost{
+    font-size: 1.5em;
+}
 .attribution { 
     font-size: 11px; text-align: center; 
 }
 .attribution a {
-     color: hsl(228, 45%, 44%);
+    color: hsl(228, 45%, 44%);
 }
 .no-of-people h2{
     display: inline;
@@ -158,16 +177,20 @@ input[type=number] {
 }
 .error-message{
     display: none;
+    position: absolute;
+    right: 0;
+    color: red;
+    font-size: 0.923em;
+    word-spacing: 0.157em;
 }
 .error-message-active{
-    display: block;
-    position: absolute;
     display: inline;
-    text-align: right;
-    color: red;
 }
-#people-active{
-    border: 1px solid red;
+.people-active{
+    border: 2px solid red;
+}
+.reset-button{
+    font-family: "space mono";
 }
 @media (min-width: 1000px) {
     .body{
@@ -202,20 +225,19 @@ input[type=number] {
         margin-bottom: 15px;
         flex-shrink: 0;
     }
- #custom-tip{
+    .custom-tip{
         width: 30%;
-        height: 36px;
-        padding: 10px;
+        padding: 13px;
         outline: 0;
         border-radius: 5px;
         background-color: var(--color4);
     }
-     #custom-tip:target{
+     .custom-tip:focus{
         border: 2px solid var(--color3);
     }
     .output{
         padding-top: 50px;
-        font-size: 13px;
+        font-size: 0.8em;
         display: flex;
         justify-content: space-between;
         flex-flow: column nowrap;
@@ -223,18 +245,11 @@ input[type=number] {
     }
     .output .reset-button{
         flex-basis: 0;
-    }
-    div > h2{
-        font-size: 13px;
-    }
-    div > p{
-        font-size: 13px;
+        font-size: 1.5em;
+        font-family: "space mono";
     }
     .cost{
-    font-size: 20px;
-    font-weight: 700
-    }
-    .result-font{
-    font-size: 10px;
+        font-size: 1.7em;
+        font-weight: 700
     }
 }

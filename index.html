@@ -9,7 +9,7 @@
   <script defer src="tip-calculator.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-    </style>
+  </style>  
   <title>Frontend Mentor | Tip calculator app</title>
 </head>
 <body>
@@ -23,33 +23,33 @@
 
     <div class="bill-select-bill-no-of-people">
       <section class="bill">
-        <h2>
+        <h2 class="bill-head">
           Bill
         </h2>   
-        <input type="number" place-holder= "0.00" name="bill" id="bill">
+        <input type="number" placeholder= "0" name="bill" class="bills">
         <div class="img"><img src="images/icon-dollar.svg" alt="dollar icon"></div>
       </section>
     
       <section class="select-tip">
   
-        <h2>
+        <h2 class="select-tip-head">
           Select Tip %
         </h2>
-       <input type="button" class="select-tip-button " value="5%">
-       <input type="button" class="select-tip-button" value="10%">
-       <input type="button" class="select-tip-button" value="15%">
-       <input type="button" class="select-tip-button" value="25%">
-       <input type="button" class="select-tip-button" value="50%">
-       <input type="number" placeholder="Custom" name="custom%" id="custom-tip">
+        <input type="button" class="select-tip-button " value="5%">
+        <input type="button" class="select-tip-button" value="10%">
+        <input type="button" class="select-tip-button" value="15%">
+        <input type="button" class="select-tip-button" value="25%">
+        <input type="button" class="select-tip-button" value="50%">
+        <input type="number" placeholder="Custom" name="custom%" class="custom-tip">
 
       </section>
   
       <section class="no-of-people">
-        <h2>
+        <h2 class="no-of-people-head">
           Number of People
         </h2>
         <p class="error-message"> Can't be zero</p>
-        <input type="number" name="people" id="people">
+        <input placeholder="1" type="number" name="people" class="people">
         <div class="img">
           <img src="images/icon-person.svg" alt="icon showing human">  
         </div>  
@@ -70,8 +70,8 @@
             </p>
           </div>
   
-          <p class="cost cost1">
-            $0.00
+          <p class="cost ">
+            $<span class="cost1">0.00</span> 
           </p>
         </div>
   
@@ -85,21 +85,21 @@
               person
             </p>
           </div>
-          <p class="cost cost2">
-            $0.00
+          <p class="cost">
+            $<span class="cost2">0.00</span>
           </p>
         </div>
       </div>
 
       <button class="reset-button">   Reset </button>
     </section>
-   </div>
+  </div>
 
   </main>
   
   <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="https://twitter.com/iamweird2_0">ADENIYI SMART</a>.
   </footer>
 </body>
 </html>

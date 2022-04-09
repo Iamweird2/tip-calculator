@@ -1,72 +1,125 @@
+// if tip = x
+// tip amount = (0.xx * bill)/people
+//total =   (1.xx * bill)/people
 
-let bill;
+let bills = document.querySelector(".bills");
+let selectTip = document.querySelector(".select-tip")
+let customTip = document.querySelector(".custom-tip")
+let tip = "";
+let noOfPeople = document.querySelector(".people")
+let noOfPeopleValue = noOfPeople.value;
+let cost1 = document.querySelector(".cost1")
+let cost2 = document.querySelector(".cost2")
+let resetButton = document.querySelector(".reset-button")
+let msg = document.querySelector(".error-message")
+let people = document.querySelector(".people")
 
-document.querySelector("#bill").addEventListener("change", function(){
-    bill = document.querySelector("#bill").value;
-    people = document.querySelector("#people").value;
+window.onload = ()=>{
+    reset();
+}
+selectTip.addEventListener("click", (e)=>{
+    if(e.target.value){
+    tip = parseInt(e.target.value)/100;
     output();
-});
-
-let people; 
-document.querySelector("#people").addEventListener("keyup", function(){
-    people = document.querySelector("#people").value;
-    if (people === 0){
-        people.ClassList.toggle("error-message-active");
+    output2();
     }
-    bill = document.querySelector("#bill").value;
-    output();
-});
-
-let tip = document.querySelector(".select-tip");
-
-let tipValue;
-tip.addEventListener("click", function(e){
-   tipValue = (parseInt(e.target.value))/100 * bill;
-   people = document.querySelector("#people").value;
-    bill = document.querySelector("#bill").value;
-    document.querySelector("#custom-tip").value = 0;
-    output();
+    else{
+        return;
+    }
 })
 
-let customTip = document.querySelector("#custom-tip");
-customTip.addEventListener("keyup", function(e){
-    tipValue = (parseInt(e.target.value))/100 * bill;
-   people = document.querySelector("#people").value;
-    bill = document.querySelector("#bill").value;
+customTip.addEventListener("keyup", (e)=>{
+    if(e.target.value){
+        tip = parseInt(e.target.value)/100;
+        output();
+        output2()
+    }else{
+        return;
+    }
+})
+
+bills.addEventListener("keyup", ()=>{
+    if(noOfPeopleValue == "" && tip == ""){
+        output2()
+        return;
+    }else{
+        output()
+    output2()
+    }
+    
+    
+} )     
+
+noOfPeople.addEventListener("keyup", ()=>{
+    noOfPeopleValue = noOfPeople.value;
     output();
+    output2()
+    if(noOfPeopleValue == 0){
+        msg.classList.add("error-message-active")
+        people.classList.add("people-active")
+    }else{
+        msg.classList.remove("error-message-active")
+        people.classList.remove("people-active")
+    }
 })
-bill = document.querySelector("#bill").value;
-people = document.querySelector("#people").value;
 
-output();
 
-let cost1 = document.querySelector(".cost1").innerText.split('$')[1];
-let cost2 = document.querySelector(".cost2").innerText.split('$')[1];
 
-let reset = document.querySelector(".reset-button");
-reset.addEventListener("click", function(){
-    document.querySelector("#bill").value = 0;
-    document.querySelector("#people").value = 0;
-    document.querySelector("#custom-tip").value = 0;
-    document.querySelector(".cost1").innerText.split('$')[1].value = 0;
+resetButton.addEventListener("click", ()=>{
+    reset();
 })
+
+
 
 function output(){
-    if(isNaN(bill)){
-        result = 0;
-    }else if(isNaN(people)){
-            result = (bill + tipValue).toFixed(2);
-        }else if(isNaN(tipValue)){
-            result = (bill * people).toFixed(2);
-        }else{
-            result = ((bill + tipValue) * people).toFixed(2);
-        }
-        if (isNaN(tipValue) === false){
-        document.querySelector(".cost1").innerText = `$${tipValue.toFixed(2)}`;
+    // for tip
+    if(bills.value !== "" && noOfPeopleValue == ""){
+        noOfPeopleValue = 1;
+        cost1.textContent = cost1.textContent.replace("0.00", `${((bills.value *tip)).toFixed(2)}`);
     }
-        document.querySelector(".cost2").innerText = `$${result}`;
+    else if(noOfPeopleValue!=="" && bills.value !== ""){
+        if(noOfPeopleValue == 0){
+            cost1.textContent = `0.00`
+        }else{
+        cost1.textContent = `${((bills.value *tip)/noOfPeopleValue).toFixed(2)}`;
+        }
+    }
+    else if(noOfPeopleValue == "" && tip == !""){
+        cost1.textContent = `${((bills.value *tip)).toFixed(2)}`;
+    }
+    else if (bills.value == "" && tip == ""){
+        cost1.textContent = `0.00`
+    }
+    else{
+        cost1.textContent = `${((bills.value *tip)/noOfPeopleValue).toFixed(2)}`;
+    }
 }
 
+function output2 (){
+    if(bills.value !== "" && tip !== ""){
+        cost2.textContent = `${((bills.value * (tip + 1) )/ noOfPeopleValue).toFixed(2)}`
+    }
+    else if(bills.value !== "" && tip == ""){
+        if(noOfPeopleValue == ""){
+            noOfPeopleValue = 1;
+            cost2.textContent = `${((bills.value )/ noOfPeopleValue).toFixed(2)}`
+        }
+        else if(noOfPeopleValue == 0){
+            cost2.textContent = `0.00`
+        }else{
+            cost2.textContent = `${((bills.value )/ noOfPeopleValue).toFixed(2)}`
+        }
+    }
+}
 
+function reset (){
+    tip = "";
+    noOfPeople.value = "";
+    bills.value =  "";
+    customTip.value = ""
+    cost1.textContent = `0.00`
+    cost2.textContent = `0.00`
+}
 
-
+// i feel this can be greatly improved, it took me alot of thoughts to get it to this stage.
+// hopefully i will gaim enough understanding to improve this later on.
